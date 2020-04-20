@@ -1,0 +1,19 @@
+{
+  "name": "nimo-player-web",
+  "version": "1.0.0",
+  "description": "NiMO TV Player Web SDK",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel example/index.html",
+    "build": "parcel build index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "parcel-bundler": "^1.12.4"
+  }
+}
