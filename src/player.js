@@ -117,7 +117,7 @@ class Player {
   }
 
   _getUrl(resourceId) {
-    return `http://www.nimo.tv/embed/${resourceId}?_uuid=${this.containerId}`;
+    return `https://www.nimo.tv/embed/${resourceId}?_uuid=${this.containerId}`;
   }
 }
 

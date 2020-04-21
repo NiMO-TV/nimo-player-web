@@ -686,7 +686,7 @@
     }, {
       key: "_getUrl",
       value: function _getUrl(resourceId) {
-        return "http://www.nimo.tv/embed/".concat(resourceId, "?_uuid=").concat(this.containerId);
+        return "https://www.nimo.tv/embed/".concat(resourceId, "?_uuid=").concat(this.containerId);
       }
     }]);
 
