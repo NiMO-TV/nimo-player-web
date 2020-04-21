@@ -676,17 +676,17 @@
         var _ref3 = config || {},
             width = _ref3.width,
             height = _ref3.height,
-            roomId = _ref3.roomId;
+            resourceId = _ref3.resourceId;
 
         var player$ = document.createElement('iframe');
-        player$.setAttribute('src', this._getUrl(roomId));
+        player$.setAttribute('src', this._getUrl(resourceId));
         player$.setAttribute('style', "width: ".concat(width, "px;height: ").concat(height, "px;"));
         return player$;
       }
     }, {
       key: "_getUrl",
-      value: function _getUrl(roomId) {
-        return "http://www.nimo.tv/embed/".concat(roomId, "?_uuid=").concat(this.containerId);
+      value: function _getUrl(resourceId) {
+        return "http://www.nimo.tv/embed/".concat(resourceId, "?_uuid=").concat(this.containerId);
       }
     }]);
 

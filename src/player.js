@@ -109,15 +109,15 @@ class Player {
   }
 
   _createPlayer(config) {
-    const { width, height, roomId } = config || {};
+    const { width, height, resourceId } = config || {};
     const player$ = document.createElement('iframe');
-    player$.setAttribute('src', this._getUrl(roomId));
+    player$.setAttribute('src', this._getUrl(resourceId));
     player$.setAttribute('style', `width: ${width}px;height: ${height}px;`);
     return player$;
   }
 
-  _getUrl(roomId) {
-    return `http://www.nimo.tv/embed/${roomId}?_uuid=${this.containerId}`;
+  _getUrl(resourceId) {
+    return `http://www.nimo.tv/embed/${resourceId}?_uuid=${this.containerId}`;
   }
 }
 
