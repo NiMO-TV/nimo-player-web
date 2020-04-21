@@ -1,7 +1,7 @@
 # nimo-player-web
 
 ## Non-Interactive Inline Frames for Live Streams, VODs and Clips
-
+With the Nimo Embedded Player, you can embed the Nimo video player on your own website. The method to embed an iFrame tag on a web page is simpler and faster than calling API using Javascript or Flash.
 ```html
 <iframe
     src="https://www.nimo.tv/embed/<channel ID, video ID, clip ID>"
@@ -12,6 +12,15 @@
     allowfullscreen="<allowfullscreen>">
 </iframe>
 ```
+
+### Device Adaption
+|Name|URL|Description|
+|:--|:--|:--|
+|Desktop Embed Player|https://www.nimo.tv/embed/<channel ID, video ID, clip ID>|It will automatically redirect to the Mobile Embed player according to the User Agent Detection.|
+|Mobile / Tablet|https://m.nimo.tv/embed/<channel ID, video ID, clip ID>|It will automatically redirect to the Desktop Embed player according to the User Agent Detection.|
+
+### Browser Adaption
+It only support the HTML player. The Flash player is no longer supported.
 
 ### Iframe Attributes
 These attributes are defined in the IFrame element. The Nimo player can not set or modify them.
@@ -30,26 +39,39 @@ These attributes are defined in the IFrame element. The Nimo player can not set 
     </tr>
   </thead>
   <tbody>
-  TODO
-    <!-- <tr>
-      <td><code>autoplay</code></td>
-      <td>boolean</td>
-      <td>If <code>true</code>, the video starts playing automatically, without the user clicking play. The exception is mobile devices, on which video cannot be played without user interaction. Default: <code>true</code>.</td>
+    <tr>
+      <td><code>_lang</code></td>
+      <td>integer(MS-LCID)</td>
+      <td>We use MS-LCID as our language code. It is the language to be used in the interface. It is expressed as the language of the control bar. When this parameter is not set, it is determined automatically according to the accept-language in the Http Request Header. The default value is English.</td>
     </tr>
     <tr>
-      <td><code>muted</code></td>
-      <td>boolean</td>
-      <td>Specifies whether the initial state of the video is muted. Default: <code>false</code>.</td>
+      <td><code>_clang</code></td>
+      <td>integer(MS-LCID)</td>
+      <td>It is the language of the live stream content. The recommended channels will depends on this.</td>
     </tr>
-    <tr>
-      <td><code>time</code></td>
-      <td>1h2m3s</td>
-      <td>Time in the video where playback starts. Specifies hours, minutes, and seconds. Default: 0h0m0s (the start of the video).</td>
-    </tr> -->
   </tbody>
 </table>
 
-
+### MS-LCID
+The list of language <-> LCID.
+```json
+{
+  "1025": "ar",
+  "1028": "zh",
+  "1033": "en",
+  "1034": "es",
+  "1041": "ja",
+  "1046": "pt",
+  "1049": "ru",
+  "1054": "th",
+  "1055": "tr",
+  "1057": "id",
+  "1066": "vi",
+  "1081": "hi",
+  "1086": "ms",
+  "1124": "fil"
+}
+```
 
 ## Interactive Frames for Live Streams, VODs and Clips
 
@@ -78,8 +100,8 @@ These attributes are defined in the IFrame element. The Nimo player can not set 
   <tbody>
     <tr>
       <td><code>channel</code><br>– OR –<br><code>video</code><br>– OR –<br><code>clip</code></td>
-      <td>string</td>
-      <td>Channel name (for a live stream), video ID, or clip ID. 
+      <td>string or integer</td>
+      <td>Channel ID (for a live stream), video ID, or clip ID. 
       <!-- (To change the channel or video later, use <code>setChannel</code>, <code>setVideo</code>, or <code>setCollection</code>; see <a href="#synchronous-javascript-playback-api">Synchronous Playback Controls</a>.) --></td>
     </tr>
     <tr>
@@ -235,6 +257,29 @@ These attributes are defined in the IFrame element. The Nimo player can not set 
   </tbody>
 </table> -->
 
+### Asynchronous JavaScript Status API
+<table>
+  <thead>
+    <tr>
+      <th>Call</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>getState():Promise</code></td>
+      <td>Returns the player's state. Return: { state: 1 }.
+      <br>Number definitions:
+      <li> -1, unstarted; video has not yet started playing</li>
+      <li> 0, ended; video has ended (either live or a vod video or a clip video)</li>
+      <li> 1, playing; video is playing</li>
+      <li> 2, paused: video is paused</li>
+      <li> 3, buffering: video is currently buffering</li>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ### JavaScript Events
 To listen to events, call <code>addEventListener(event:String, callback:Function)</code>.
 <table>
@@ -294,3 +339,4 @@ To listen to events, call <code>addEventListener(event:String, callback:Function
   player.play();
 </script>
 ```
+
