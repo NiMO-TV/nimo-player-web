@@ -10,13 +10,11 @@ const { NODE_ENV } = process.env;
 
 let plugins = [json(), resolve(), babel(), builtins()];
 let outFileName = `dist/${version}/nimo-embed.js`;
-let sourcemap = false;
 
 if (NODE_ENV == 'production') {
   outFileName = `dist/${version}/nimo-embed.min.js`;
   plugins.push(uglify());
   plugins.push(sourcemaps());
-  sourcemap = true;
 }
 
 module.exports = {
@@ -26,7 +24,7 @@ module.exports = {
       file: outFileName,
       format: 'umd',
       name: 'NimoTV',
-      sourcemap,
+      sourcemap: true,
     },
   ],
   watch: {

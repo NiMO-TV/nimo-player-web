@@ -63,8 +63,8 @@ class Player {
     }
 
     if (messageId === EMessageId.DISPATCH_PLAYER_EVENT) {
-      const { eventType, ...data } = config || {};
-      this.emit(eventType, ...data);
+      const { eventType, data } = config || {};
+      this.emit(eventType, data);
     }
   };
 
