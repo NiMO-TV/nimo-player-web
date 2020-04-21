@@ -3,7 +3,6 @@ Thumbs.db
 .DS_Store
 npm-debug.log
 node_modules
-dist/example.*
-dist/index.html
+dist/*.map
 .vscode
 .cache

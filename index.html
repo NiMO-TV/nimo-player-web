@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NiMO Player SDK DEMO</title>
+  </head>
+  <body>
+    <div id="player"></div>
+    <div>
+      <button id="pause-btn">Pause</button>
+      <button id="play-btn">Play</button>
+      <button id="get-player-state-btn">Get Player State</button>
+    </div>
+    <script src="./dist/0.0.1/nimo-embed.js"></script>
+    <script>
+      var options = {
+        width: 900,
+        height: 400,
+        roomId: 6173062192,
+      };
+      var player = new NimoTV.Player('player', options);
+
+      player.on(NimoTV.Player.ENDED, (data) => {
+        // do something...
+        console.warn(data);
+      });
+
+      document.getElementById('play-btn').addEventListener('click', () => {
+        player.play();
+      });
+
+      document.getElementById('pause-btn').addEventListener('click', () => {
+        player.pause();
+      });
+
+      document.getElementById('get-player-state-btn').addEventListener('click', () => {
+        player.getState().then((data) => {
+          // do something...
+          console.warn(data);
+        });
+      });
+    </script>
+  </body>
+</html>
