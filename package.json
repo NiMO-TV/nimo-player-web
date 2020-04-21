@@ -1,8 +1,7 @@
 {
   "name": "nimo-player-web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NiMO TV Player Web SDK",
-  "main": "dist/index.js",
   "scripts": {
     "start": "serve",
     "dev": "rollup --config --watch",

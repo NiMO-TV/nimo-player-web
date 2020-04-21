@@ -9,10 +9,10 @@ import { version } from './package.json';
 const { NODE_ENV } = process.env;
 
 let plugins = [json(), resolve(), babel(), builtins()];
-let outFileName = `dist/${version}/nimo-embed.js`;
+let outFileName = `dist/embed-player-${version}.js`;
 
 if (NODE_ENV == 'production') {
-  outFileName = `dist/${version}/nimo-embed.min.js`;
+  outFileName = `dist/embed-player-${version}.min.js`;
   plugins.push(uglify());
   plugins.push(sourcemaps());
 }
