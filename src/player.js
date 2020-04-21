@@ -1,5 +1,6 @@
 import { EMessageId, EBusinessMessageId } from './config';
 import eventful from './eventful';
+import { addUrlParams } from './util';
 
 class Player {
   _containerId;
@@ -78,13 +79,13 @@ class Player {
 
   getState = () => {
     return new Promise((resolve, reject) => {
-      const handler = data => {
+      const handler = (data) => {
         resolve(data);
         this.off(Player.STATE, handler);
-      }
+      };
       this.on(Player.STATE, handler);
       this.sendBizMsg(EBusinessMessageId.INVOKE_PLAYER_GET_PLAYER_STATE);
-    })
+    });
   };
 
   sendBizMsg(messageId, data) {
@@ -109,15 +110,27 @@ class Player {
   }
 
   _createPlayer(config) {
-    const { width, height, resourceId } = config || {};
+    const { width, height, resourceId, lang } = config || {};
     const player$ = document.createElement('iframe');
-    player$.setAttribute('src', this._getUrl(resourceId));
-    player$.setAttribute('style', `width: ${width}px;height: ${height}px;`);
+    player$.setAttribute(
+      'src',
+      this._getUrl(resourceId, {
+        _lang: lang,
+      })
+    );
+    player$.setAttribute('width', width);
+    player$.setAttribute('height', height);
     return player$;
   }
 
-  _getUrl(resourceId) {
-    return `https://www.nimo.tv/embed/${resourceId}?_uuid=${this.containerId}`;
+  _getUrl(resourceId, queryParams) {
+    let url = `https://www.nimo.tv/embed/${resourceId}`;
+    const params = {
+      ...queryParams,
+      _uuid: this.containerId,
+    };
+    url = addUrlParams(url, params);
+    return url;
   }
 }
 
