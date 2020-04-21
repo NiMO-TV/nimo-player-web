@@ -53,7 +53,7 @@ These attributes are defined in the IFrame element. The Nimo player can not set 
 </table>
 
 ### MS-LCID
-The list of language <-> LCID.
+The list of language <-> MS-LCID.
 ```json
 {
   "1025": "ar",
@@ -126,7 +126,7 @@ The list of language <-> LCID.
     </tr>
   </tbody>
 </table>
-<!-- 
+
 ### Optional Parameter
 <table>
   <thead>
@@ -137,13 +137,18 @@ The list of language <-> LCID.
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <!-- <tr>
       <td><code>playsinline</code></td>
       <td>boolean</td>
       <td>If <code>true</code>, the embedded player plays inline for mobile iOS apps. Default: <code>true</code>.</td>
+    </tr> -->
+    <tr>
+      <td><code>lang</code></td>
+      <td>integer(MS-LCID)</td>
+      <td>We use MS-LCID as our language code. It is the language to be used in the interface. It is expressed as the language of the control bar. When this parameter is not set, it is determined automatically according to the accept-language in the Http Request Header. The default value is English.</td>
     </tr>
   </tbody>
-</table> -->
+</table>
 
 ### Synchronous JavaScript Playback API
 <table>
