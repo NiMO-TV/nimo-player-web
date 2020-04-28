@@ -262,7 +262,7 @@ The list of language <-> MS-LCID.
   </tbody>
 </table> -->
 
-### Asynchronous JavaScript Status API
+<!-- ### Asynchronous JavaScript Status API
 <table>
   <thead>
     <tr>
@@ -283,7 +283,7 @@ The list of language <-> MS-LCID.
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 ### JavaScript Events
 To listen to events, call <code>addEventListener(event:String, callback:Function)</code>.
@@ -299,15 +299,15 @@ To listen to events, call <code>addEventListener(event:String, callback:Function
       <td><code>NimoTV.Player.ENDED</code></td>
       <td>Video or stream ends.</td>
     </tr>
-    <!-- <tr>
-      <td><code>Twitch.Player.PAUSE</code></td>
+    <tr>
+      <td><code>NimoTV.Player.PAUSE</code></td>
       <td>Player is paused. Buffering and seeking is not considered paused.</td>
     </tr>
     <tr>
-      <td><code>Twitch.Player.PLAY</code></td>
+      <td><code>NimoTV.Player.PLAY</code></td>
       <td>Player just unpaused, will either start video playback or start buffering.</td>
     </tr>
-    <tr>
+    <!--<tr>
       <td><code>Twitch.Player.PLAYBACK_BLOCKED</code></td>
       <td>Player playback was blocked. Usually fired after an unmuted autoplay or unmuted programmatic call on <code>play()</code>.</td>
     </tr>

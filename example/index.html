@@ -10,16 +10,25 @@
       <button id="play-btn">Play</button>
       <button id="get-player-state-btn">Get Player State</button>
     </div>
-    <script src="../dist/embed-player-0.1.0.min.js"></script>
+    <script src="../dist/embed-player-0.2.0.min.js"></script>
     <script>
       var options = {
         width: 900,
         height: 400,
         resourceId: 6173062192,
+        lang: 1033
       };
       var player = new NimoTV.Player('player', options);
 
       player.on(NimoTV.Player.ENDED, () => {
+        // do something...
+      });
+
+      player.on(NimoTV.Player.PLAY, () => {
+        // do something...
+      });
+
+      player.on(NimoTV.Player.PAUSED, () => {
         // do something...
       });
 
