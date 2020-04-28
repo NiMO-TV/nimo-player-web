@@ -35,6 +35,10 @@ class Player {
 
   static STATE = 'getPlayerState';
 
+  static PLAY = 'playing'; // 抹平状态名称差异
+
+  static PAUSED = 'paused';
+
   constructor(containerId, config) {
     eventful(this);
     this.containerId = containerId;
