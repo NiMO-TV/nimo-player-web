@@ -76,7 +76,7 @@ The list of language <-> MS-LCID.
 ## Interactive Frames for Live Streams, VODs and Clips
 
 ```html
-<script src= "https://www.nimo.tv/sdk/embed-player-0.1.0.min.js"></script>
+<script src= "https://www.nimo.tv/sdk/embed-player-0.3.0.min.js"></script>
 <div id="<player div ID>"></div>
 <script type="text/javascript">
   var options = {
@@ -166,6 +166,10 @@ The list of language <-> MS-LCID.
     <tr>
       <td><code>play():void</code></td>
       <td>Begins playing the specified video.</td>
+    </tr>
+    <tr>
+      <td><code>destroy():void</code></td>
+      <td>Removes the <code>&lt;iframe&gt;</code> containing the player.</td>
     </tr>
     <!-- <tr>
       <td><code>seek(timestamp:Float):void</code></td>
@@ -332,7 +336,7 @@ To listen to events, call <code>addEventListener(event:String, callback:Function
 
 ### Example
 ```html
-<script src= "https://www.nimo.tv/sdk/embed-player-0.1.0.min.js"></script>
+<script src= "https://www.nimo.tv/sdk/embed-player-0.3.0.min.js"></script>
 <div id="SamplePlayerDivID"></div>
 <script type="text/javascript">
   var options = {

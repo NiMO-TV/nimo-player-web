@@ -81,6 +81,12 @@ class Player {
     this.sendBizMsg(EBusinessMessageId.INVOKE_PLAYER_PAUSE);
   };
 
+  destroy = () => {
+    if (this.player$ && this.player$.parentNode) {
+      this.player$.parentNode.removeChild(this.player$);
+    }
+  }
+
   getState = () => {
     return new Promise((resolve, reject) => {
       const handler = (data) => {
