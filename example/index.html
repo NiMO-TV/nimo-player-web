@@ -9,8 +9,9 @@
       <button id="pause-btn">Pause</button>
       <button id="play-btn">Play</button>
       <button id="get-player-state-btn">Get Player State</button>
+      <button id="destroy-btn">Destroy</button>
     </div>
-    <script src="../dist/embed-player-0.2.0.min.js"></script>
+    <script src="../dist/embed-player-0.3.0.min.js"></script>
     <script>
       var options = {
         width: 900,
@@ -53,6 +54,10 @@
 
           // do something...
         });
+      });
+
+      document.getElementById('destroy-btn').addEventListener('click', () => {
+        player.destroy();
       });
     </script>
   </body>
