@@ -39,6 +39,8 @@ class Player {
 
   static PAUSED = 'paused';
 
+  targetOrigin = 'https://www.nimo.tv';
+
   constructor(containerId, config) {
     eventful(this);
     this.containerId = containerId;
@@ -114,7 +116,7 @@ class Player {
           type,
           _uuid: this.containerId,
         },
-        '*'
+        this.targetOrigin
       );
     }
   }
@@ -134,7 +136,7 @@ class Player {
   }
 
   _getUrl(resourceId, queryParams) {
-    let url = `https://www.nimo.tv/embed/${resourceId}`;
+    let url = `${this.targetOrigin}/embed/${resourceId}`;
     const params = {
       ...queryParams,
       _uuid: this.containerId,
