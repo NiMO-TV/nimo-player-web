@@ -132,6 +132,10 @@ class Player {
     );
     player$.setAttribute('width', width);
     player$.setAttribute('height', height);
+    player$.setAttribute('frameborder', 0);
+    player$.setAttribute('scrolling', 0);
+    player$.setAttribute('allow', 'fullscreen');
+    player$.setAttribute('allowfullscreen', true);
     return player$;
   }
 
