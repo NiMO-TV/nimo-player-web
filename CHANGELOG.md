@@ -1,0 +1,16 @@
+## v0.3.2 - 2020-06-05
+* Fixed the full-screen error.
+
+## v0.3.1 - 2020-05-07
+* Fixed unknow domain and added 'targetOrigin' attribute.
+
+## v0.3.0 - 2020-05-07
+* Added 'player.destory()' method.
+
+## v0.2.0 - 2020-04-28
+* Added 'lang' parameter.
+* Changed the width, heigh styles as HTML attributes.
+* Added 'Play' and 'Pause' player event listeners.
+
+## v0.1.0 - 2020-04-21
+* Init project. Release SDK 0.1.0.
