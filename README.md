@@ -150,7 +150,7 @@ The list of language <-> MS-LCID.
     <tr>
       <td><code>autoplay</code></td>
       <td>integer</td>
-      <td>This parameter specifies whether the initial video will automatically start to play when the player loads. Supported values are 0 or 1. The default value is 1, means not to play automatically.</td>
+      <td>This parameter specifies whether the initial video will automatically start to play when the player loads. Supported values are 0 or 1.</td>
     </tr>
   </tbody>
 </table>
