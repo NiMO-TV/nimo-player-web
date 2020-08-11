@@ -1,3 +1,9 @@
+## v0.4.0 - 2020-07-24
+* Added `autoplay` parameter.
+
+## v0.3.3 - 2020-07-20
+* Fixed a potential security vulnerability in lodash.
+
 ## v0.3.2 - 2020-06-05
 * Fixed the full-screen error.
 

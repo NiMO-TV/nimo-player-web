@@ -122,12 +122,13 @@ class Player {
   }
 
   _createPlayer(config) {
-    const { width, height, resourceId, lang } = config || {};
+    const { width, height, resourceId, lang, autoplay } = config || {};
     const player$ = document.createElement('iframe');
     player$.setAttribute(
       'src',
       this._getUrl(resourceId, {
         _lang: lang,
+        _autoplay: autoplay
       })
     );
     player$.setAttribute('width', width);

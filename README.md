@@ -147,6 +147,11 @@ The list of language <-> MS-LCID.
       <td>integer(MS-LCID)</td>
       <td>We use MS-LCID as our language code. It is the language to be used in the interface. It is expressed as the language of the control bar. When this parameter is not set, it is determined automatically according to the accept-language in the Http Request Header. The default value is English.</td>
     </tr>
+    <tr>
+      <td><code>autoplay</code></td>
+      <td>integer</td>
+      <td>This parameter specifies whether the initial video will automatically start to play when the player loads. Supported values are 0 or 1.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -342,7 +347,7 @@ To listen to events, call <code>addEventListener(event:String, callback:Function
   var options = {
     width: 900,
     height: 400,
-    resourceId: 6173062192,
+    resourceId: 6173062192
   };
   var player = new NimoTV.Player("SamplePlayerDivID", options);
   player.play();
