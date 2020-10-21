@@ -152,6 +152,11 @@ The list of language <-> MS-LCID.
       <td>integer</td>
       <td>This parameter specifies whether the initial video will automatically start to play when the player loads. Supported values are 0 or 1.</td>
     </tr>
+    <tr>
+      <td><code>muted</code></td>
+      <td>integer</td>
+      <td>Set this parameter to 1 whether the initial video will silently start to play when the player loads.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -175,6 +180,10 @@ The list of language <-> MS-LCID.
     <tr>
       <td><code>destroy():void</code></td>
       <td>Removes the <code>&lt;iframe&gt;</code> containing the player.</td>
+    </tr>
+    <tr>
+      <td><code>muted(muted: boolean):void</code></td>
+      <td>Mutes/Unmutes the player.</td>
     </tr>
     <!-- <tr>
       <td><code>seek(timestamp:Float):void</code></td>
@@ -315,6 +324,10 @@ To listen to events, call <code>addEventListener(event:String, callback:Function
     <tr>
       <td><code>NimoTV.Player.PLAY</code></td>
       <td>Player just unpaused, will either start video playback or start buffering.</td>
+    </tr>
+    <tr>
+      <td><code>NimoTV.Player.MUTED</code></td>
+      <td>Player muted state is changed.</td>
     </tr>
     <!--<tr>
       <td><code>Twitch.Player.PLAYBACK_BLOCKED</code></td>

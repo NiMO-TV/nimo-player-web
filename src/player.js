@@ -39,6 +39,8 @@ class Player {
 
   static PAUSED = 'paused';
 
+  static MUTED = 'muted';
+
   targetOrigin = 'https://www.nimo.tv';
 
   constructor(containerId, config) {
@@ -56,6 +58,9 @@ class Player {
 
   dispose() {
     window.removeEventListener('message', this.handleWndMessage);
+    if (this.handleGetState) {
+      this.off(Player.STATE, this.handleGetState);
+    }
     this.player$ = null;
     this.container$ = null;
     this.containerId = null;
@@ -91,14 +96,20 @@ class Player {
 
   getState = () => {
     return new Promise((resolve, reject) => {
-      const handler = (data) => {
+      this.handleGetState = (data) => {
         resolve(data);
-        this.off(Player.STATE, handler);
+        this.off(Player.STATE, this.handleGetState);
       };
-      this.on(Player.STATE, handler);
+      this.on(Player.STATE, this.handleGetState);
       this.sendBizMsg(EBusinessMessageId.INVOKE_PLAYER_GET_PLAYER_STATE);
     });
   };
+
+  muted = muted => {
+    this.sendBizMsg(EBusinessMessageId.INVOKE_PLAYER_MUTE, {
+      muted
+    });
+  }
 
   sendBizMsg(messageId, data) {
     this._send('biz_msg', {
@@ -122,13 +133,14 @@ class Player {
   }
 
   _createPlayer(config) {
-    const { width, height, resourceId, lang, autoplay } = config || {};
+    const { width, height, resourceId, lang, autoplay, muted } = config || {};
     const player$ = document.createElement('iframe');
     player$.setAttribute(
       'src',
       this._getUrl(resourceId, {
         _lang: lang,
-        _autoplay: autoplay
+        _autoplay: autoplay,
+        _muted: muted
       })
     );
     player$.setAttribute('width', width);
