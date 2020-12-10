@@ -10,8 +10,10 @@
       <button id="play-btn">Play</button>
       <button id="get-player-state-btn">Get Player State</button>
       <button id="destroy-btn">Destroy</button>
+      <button id="mute-btn">Mute</button>
+      <button id="unmute-btn">Unmute</button>
     </div>
-    <script src="../dist/embed-player-0.4.0.min.js"></script>
+    <script src="../dist/embed-player-0.5.0.min.js"></script>
     <script>
       var options = {
         width: 900,
@@ -31,6 +33,11 @@
 
       player.on(NimoTV.Player.PAUSED, () => {
         // do something...
+      });
+
+      player.on(NimoTV.Player.MUTED, data => {
+        // do something...
+        console.log('muted', data)
       });
 
       document.getElementById('play-btn').addEventListener('click', () => {
@@ -58,6 +65,14 @@
 
       document.getElementById('destroy-btn').addEventListener('click', () => {
         player.destroy();
+      });
+
+      document.getElementById('mute-btn').addEventListener('click', () => {
+        player.muted(true);
+      });
+
+      document.getElementById('unmute-btn').addEventListener('click', () => {
+        player.muted(false);
       });
     </script>
   </body>
