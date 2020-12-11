@@ -9,4 +9,6 @@ const EBusinessMessageId = {
   INVOKE_PLAYER_MUTE: 3004, // Mute
 };
 
-export { EMessageId, EBusinessMessageId };
+const TrustedOrigin = ['https://www.nimo.tv', 'https://m.nimo.tv'];
+
+export { EMessageId, EBusinessMessageId, TrustedOrigin };
