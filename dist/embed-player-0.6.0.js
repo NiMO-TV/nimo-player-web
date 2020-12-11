@@ -122,6 +122,7 @@
     INVOKE_PLAYER_MUTE: 3004 // Mute
 
   };
+  var TrustedOrigin = ['https://www.nimo.tv', 'https://m.nimo.tv'];
 
   var domain; // This constructor is used to store event handlers. Instantiating this is
   // faster than explicitly calling `Object.create(null)` to get a "clean" empty
@@ -657,8 +658,8 @@
           return;
         }
 
-        if (origin !== _this.targetOrigin) {
-          _this.targetOrigin = origin;
+        if (TrustedOrigin.indexOf(origin) && origin !== _this.targetOrigin) {
+          _this.targetOrigin = encodeURI(origin);
         }
 
         if (messageId === EMessageId.DISPATCH_PLAYER_EVENT) {
@@ -778,7 +779,7 @@
     }, {
       key: "_getUrl",
       value: function _getUrl(resourceId, queryParams) {
-        var url = "".concat(this.targetOrigin, "/embed/").concat(resourceId);
+        var url = "https://www.nimo.tv/embed/".concat(resourceId);
 
         var params = _objectSpread2({}, queryParams, {
           _uuid: this.containerId

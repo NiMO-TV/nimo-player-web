@@ -1,4 +1,4 @@
-import { EMessageId, EBusinessMessageId } from './config';
+import { EMessageId, EBusinessMessageId, TrustedOrigin } from './config';
 import eventful from './eventful';
 import { addUrlParams } from './util';
 
@@ -74,8 +74,8 @@ class Player {
       return;
     }
 
-    if (origin !== this.targetOrigin) {
-      this.targetOrigin = origin;
+    if (TrustedOrigin.indexOf(origin) && origin !== this.targetOrigin) {
+      this.targetOrigin = encodeURI(origin);
     }
 
     if (messageId === EMessageId.DISPATCH_PLAYER_EVENT) {
@@ -96,7 +96,7 @@ class Player {
     if (this.player$ && this.player$.parentNode) {
       this.player$.parentNode.removeChild(this.player$);
     }
-  }
+  };
 
   getState = () => {
     return new Promise((resolve, reject) => {
@@ -109,11 +109,11 @@ class Player {
     });
   };
 
-  muted = muted => {
+  muted = (muted) => {
     this.sendBizMsg(EBusinessMessageId.INVOKE_PLAYER_MUTE, {
-      muted
+      muted,
     });
-  }
+  };
 
   sendBizMsg(messageId, data) {
     this._send('biz_msg', {
@@ -144,7 +144,7 @@ class Player {
       this._getUrl(resourceId, {
         _lang: lang,
         _autoplay: autoplay,
-        _muted: muted
+        _muted: muted,
       })
     );
     player$.setAttribute('width', width);
@@ -157,7 +157,7 @@ class Player {
   }
 
   _getUrl(resourceId, queryParams) {
-    let url = `${this.targetOrigin}/embed/${resourceId}`;
+    let url = `https://www.nimo.tv/embed/${resourceId}`;
     const params = {
       ...queryParams,
       _uuid: this.containerId,
