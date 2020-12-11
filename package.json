@@ -1,6 +1,6 @@
 {
   "name": "nimo-player-web",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "NiMO TV Player Web SDK",
   "scripts": {
     "start": "serve",

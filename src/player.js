@@ -67,11 +67,15 @@ class Player {
   }
 
   handleWndMessage = (evt) => {
-    const { data: evtData } = evt;
+    const { data: evtData, origin } = evt;
     const { messageId, _uuid, data: config } = evtData || {};
 
     if (_uuid !== this.containerId) {
       return;
+    }
+
+    if (origin !== this.targetOrigin) {
+      this.targetOrigin = origin;
     }
 
     if (messageId === EMessageId.DISPATCH_PLAYER_EVENT) {

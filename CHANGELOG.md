@@ -1,3 +1,10 @@
+## v0.6.0 - 2020-12-11
+* Fixed this player methods not work in  mobile browser.
+
+## v0.5.0 - 2020-10-21
+* Added `muted` parameter and `muted()` method.
+* Fixed useless regular-expression character escape
+
 ## v0.4.0 - 2020-07-24
 * Added `autoplay` parameter.
 
