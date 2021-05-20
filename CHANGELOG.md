@@ -1,5 +1,5 @@
 ## v0.6.1 - 2021-05-11
-* Fixed a potential security vulnerability in lodash.
+* Changed dependencies and devDependencies.
 
 ## v0.6.0 - 2020-12-11
 * Fixed this player methods not work in  mobile browser.
